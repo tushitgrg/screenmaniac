@@ -1,0 +1,31 @@
+{
+  "name": "electron-screen-recorder",
+  "version": "1.0.0",
+  "description": "Screen recorder application built with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+     "postinstall": "electron-rebuild"
+  },
+  "iohook": {
+    "targets": [
+      "node-88",
+      "electron-87"
+    ],
+    "platforms": [
+      "win32",
+      "darwin"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
+  },
+  "dependencies": {
+    "electron": "12.2.3",
+    "iohook": "^0.9.3"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^3.2.9"
+  }
+}

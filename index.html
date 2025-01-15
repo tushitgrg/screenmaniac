@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screen Recorder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #videoElement {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+        select {
+            padding: 5px;
+            margin: 10px 0;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Screen Recorder</h2>
+    <div>
+        <select id="videoSource"></select>
+    </div>
+    <div class="controls">
+        <button id="startBtn">Start Recording</button>
+        <button id="stopBtn" disabled>Stop Recording</button>
+    </div>
+    <video id="videoElement" autoplay></video>
+    <script src="renderer.js"></script>
+</body>
+</html>
