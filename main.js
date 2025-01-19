@@ -1,4 +1,3 @@
-// main.js
 const { app, BrowserWindow, ipcMain, desktopCapturer, screen } = require('electron');
 
 const ioHook = require('iohook');
