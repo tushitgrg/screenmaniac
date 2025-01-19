@@ -1,15 +1,17 @@
 {
-  "name": "electron-screen-recorder",
+  "name": "screen-maniac",
+  "productName": "Screen Maniac",
   "version": "1.0.0",
   "description": "Screen recorder application built with Electron",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-     "postinstall": "electron-rebuild"
+    "postinstall": "electron-builder install-app-deps && iohook-prebuild",
+    "build": "electron-builder"
   },
   "iohook": {
     "targets": [
-      "node-88",
+      "node-83",
       "electron-87"
     ],
     "platforms": [
@@ -22,10 +24,52 @@
     ]
   },
   "dependencies": {
-    "electron": "12.2.3",
-    "iohook": "^0.9.3"
+    "ffmpeg-static": "^5.2.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "iohook": "^0.9.3",
+    "url": "^0.11.4"
   },
   "devDependencies": {
+    "electron": "^12.2.3",
+    "electron-builder": "^23.6.0",
     "electron-rebuild": "^3.2.9"
+  },
+  "build": {
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/iohook/build/Release/iohook.node",
+      "node_modules/ffmpeg-static/bin/${os}/${arch}/ffmpeg",
+      "node_modules/ffmpeg-static/index.js",
+      "node_modules/ffmpeg-static/package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/*.map",
+      "node_modules/iohook/**/*",
+      "./public/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "./public/icon.icns"
+     
+    
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+       "icon": "./public/icon.png"
+    },
+    "extraResources": [
+      {
+        "from": "node_modules/iohook/builds",
+        "to": "node_modules/iohook/builds"
+      }
+    ]
   }
 }
